@@ -15,17 +15,33 @@ namespace EchoMessenger
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            // TextBox에 입력된 문자열을 가져오고 앞뒤 공백 제거
-            string msg = txtMessage.Text.Trim();
+            // TextBox 안에 입력된 문자열을 변수에 저장
+            string msg;
+            msg = txtMessage.Text;
+
+            // 문자열 앞뒤 공백 제거
+            msg = msg.Trim();
 
             // 입력값이 null이거나 공백이면 전송 안함
             if (!string.IsNullOrWhiteSpace(msg))
             {
-                // 현재 시간을 시:분:초 형식으로 가져옴
-                string time = DateTime.Now.ToString("HH:mm:ss");
+                // 현재 시간 저장
+                string time;
+                time = DateTime.Now.ToString("HH:mm:ss");
 
-                // ListBox에 [시간] 메시지 형태로 추가
-                lstChat.Items.Add("[" + time + "] " + msg);
+                // 시간과 메시지를 하나의 문자열로 합침
+                string result;
+                result = "[" + time + "] " + msg;
+
+                // ListBox에 메시지 추가
+                lstChat.Items.Add(result);
+
+                // ListBox에 저장된 메시지 개수를 변수에 저장
+                int count;
+                count = lstChat.Items.Count;
+
+                // Label에 메시지 개수 표시
+                lblCount.Text = "현재 대화: " + count + "개";
 
                 // 입력창 초기화
                 txtMessage.Clear();
