@@ -6,10 +6,10 @@ namespace EchoMessenger
         {
             InitializeComponent();
 
-            // TextBox의 KeyDown 이벤트를 코드로 강제 연결 (엔터키 동작을 위해)
+            // TextBox의 KeyDown 이벤트를 코드로 강제 연결 (엔터키 동작을 위해서)
             txtMessage.KeyDown += txtMessage_KeyDown;
 
-            // TextBox의 TextChanged 이벤트를 코드로 강제 연결 (글자 수 제한을 위해)
+            // TextBox의 TextChanged 이벤트를 코드로 강제 연결 (글자 수 제한을 위해서)
             txtMessage.TextChanged += txtMessage_TextChanged;
 
             // Enter 키를 누르면 btnSend 버튼이 자동으로 클릭되도록 설정
@@ -28,9 +28,9 @@ namespace EchoMessenger
             // 입력값이 null이거나 공백이면 전송 안함
             if (!string.IsNullOrWhiteSpace(msg))
             {
-                // 현재 시간 저장
+                // 현재 시간 저장 (작성 년도 월 일 시 분 초 추가)
                 string time;
-                time = DateTime.Now.ToString("HH:mm:ss");
+                time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                 // 시간과 메시지를 하나의 문자열로 합침
                 string result;
