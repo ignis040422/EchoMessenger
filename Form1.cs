@@ -30,7 +30,7 @@ namespace EchoMessenger
             {
                 // 현재 시간 저장 (작성 년도 월 일 시 분 초 추가)
                 string time;
-                time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                time = DateTime.Now.ToString("yyyy-MM-dd / HH:mm:ss");
 
                 // 시간과 메시지를 하나의 문자열로 합침
                 string result;
