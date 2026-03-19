@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            Echo_Messenger = new Label();
             txtMessage = new TextBox();
             btnSend = new Button();
             lstChat = new ListBox();
             SuspendLayout();
             // 
-            // label1
+            // Echo_Messenger
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("맑은 고딕", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            label1.ForeColor = SystemColors.MenuHighlight;
-            label1.Location = new Point(55, 58);
-            label1.Name = "label1";
-            label1.Size = new Size(258, 40);
-            label1.TabIndex = 0;
-            label1.Text = "Echo Messeenger";
+            Echo_Messenger.AutoSize = true;
+            Echo_Messenger.Font = new Font("맑은 고딕", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            Echo_Messenger.ForeColor = SystemColors.MenuHighlight;
+            Echo_Messenger.Location = new Point(55, 58);
+            Echo_Messenger.Name = "Echo_Messenger";
+            Echo_Messenger.Size = new Size(258, 40);
+            Echo_Messenger.TabIndex = 0;
+            Echo_Messenger.Text = "Echo Messeenger";
             // 
             // txtMessage
             // 
@@ -63,6 +63,7 @@
             btnSend.Text = "전송";
             btnSend.UseVisualStyleBackColor = false;
             btnSend.Click += btnSend_Click;
+            btnSend.KeyDown += txtMessage_KeyDown;
             // 
             // lstChat
             // 
@@ -80,7 +81,7 @@
             Controls.Add(lstChat);
             Controls.Add(btnSend);
             Controls.Add(txtMessage);
-            Controls.Add(label1);
+            Controls.Add(Echo_Messenger);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -89,7 +90,7 @@
 
         #endregion
 
-        private Label label1;
+        private Label Echo_Messenger;
         private TextBox txtMessage;
         private Button btnSend;
         private ListBox lstChat;
