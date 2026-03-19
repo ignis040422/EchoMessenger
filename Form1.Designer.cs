@@ -33,6 +33,8 @@
             btnSend = new Button();
             lstChat = new ListBox();
             lblCount = new Label();
+            btnDelete = new Button();
+            btnClear = new Button();
             SuspendLayout();
             // 
             // Echo_Messenger
@@ -52,6 +54,7 @@
             txtMessage.Name = "txtMessage";
             txtMessage.Size = new Size(464, 23);
             txtMessage.TabIndex = 1;
+            txtMessage.TextChanged += txtMessage_TextChanged;
             // 
             // btnSend
             // 
@@ -85,11 +88,33 @@
             lblCount.TabIndex = 4;
             lblCount.Text = "현재 대화: 0개";
             // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(443, 385);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(89, 30);
+            btnDelete.TabIndex = 5;
+            btnDelete.Text = "메시지 삭제";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // btnClear
+            // 
+            btnClear.Location = new Point(551, 385);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(89, 30);
+            btnClear.TabIndex = 6;
+            btnClear.Text = "전체 삭제";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnClear);
+            Controls.Add(btnDelete);
             Controls.Add(lblCount);
             Controls.Add(lstChat);
             Controls.Add(btnSend);
@@ -108,5 +133,7 @@
         private Button btnSend;
         private ListBox lstChat;
         private Label lblCount;
+        private Button btnDelete;
+        private Button btnClear;
     }
 }

@@ -9,6 +9,9 @@ namespace EchoMessenger
             // TextBox의 KeyDown 이벤트를 코드로 강제 연결 (엔터키 동작을 위해)
             txtMessage.KeyDown += txtMessage_KeyDown;
 
+            // TextBox의 TextChanged 이벤트를 코드로 강제 연결 (글자 수 제한을 위해)
+            txtMessage.TextChanged += txtMessage_TextChanged;
+
             // Enter 키를 누르면 btnSend 버튼이 자동으로 클릭되도록 설정
             this.AcceptButton = btnSend;
         }
@@ -63,7 +66,55 @@ namespace EchoMessenger
                 e.SuppressKeyPress = true;
             }
         }
+
+        private void txtMessage_TextChanged(object sender, EventArgs e)
+        {
+            // 입력된 문자열 길이가 50자를 초과할 경우
+            if (txtMessage.Text.Length > 50)
+            {
+                // 경고 메시지 출력
+                MessageBox.Show("50자 이하로 입력하세요.");
+
+                // 50자까지만 남기고 나머지 제거
+                txtMessage.Text = txtMessage.Text.Substring(0, 50);
+
+                // 커서를 문자열 끝으로 이동
+                txtMessage.SelectionStart = txtMessage.Text.Length;
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // ListBox에서 선택된 항목이 있는지 확인
+            if (lstChat.SelectedIndex != -1)
+            {
+                // 선택된 항목을 리스트에서 제거
+                lstChat.Items.RemoveAt(lstChat.SelectedIndex);
+
+                // ListBox에 저장된 메시지 개수를 변수에 저장
+                int count;
+                count = lstChat.Items.Count;
+
+                // Label에 메시지 개수 표시
+                lblCount.Text = "현재 대화: " + count + "개";
+            }
+            else
+            {
+                // 선택된 항목이 없을 경우 안내 메시지 출력
+                MessageBox.Show("삭제할 메시지를 선택하세요.");
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            // ListBox의 모든 항목을 삭제
+            lstChat.Items.Clear();
+
+            // Label을 초기 상태로 변경
+            lblCount.Text = "현재 대화: 0개";
+
+            // 입력창으로 다시 포커스 이동
+            txtMessage.Focus();
+        }
     }
 }
-
-
